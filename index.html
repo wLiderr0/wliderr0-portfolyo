@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wLiderr0 Site</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div id="#top"></div>
+
+
+  <!-- Üst Menü -->
+  <header>
+    <div class="logo">wLiderr0 <span>Yazılım</span></div>
+    <nav>
+      <a href="#about">Hakkımda</a>
+      <a href="#education">Eğitim</a>
+      <a href="#services">Hizmetler</a>
+      <a href="#references">Referanslar</a>
+      <a href="#contact">İletişim</a>
+    </nav>
+  </header>
+
+  <!-- Ana Giriş -->
+  <main>
+    <div class="left">
+      <h1>Merhaba, ben <span class="name">wLiderr0</span></h1>
+      <h2>Ben <span class="role">Web Developerım</span></h2>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, cum harum quibusdam quo illo rem recusandae vel.
+        Mollitia, nostrum? Sit ipsa ullam rerum incidunt? Minus quas dignissimos nostrum culpa aliquid?
+      </p>
+      <div class="socials">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <div class="buttons">
+        <a class="btn" href="#about">Hakkımda</a>
+        <a class="btn-outline" href="#contact">Bana Ulaş</a>
+      </div>
+    </div>
+
+    <img src="images/wliderr0.png" alt="" class="yuvarlak" />
+  </main>
+
+  <!-- Hakkımda -->
+  <section id="about">
+    <h2>Hakkımda</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo sapiente porro facere natus libero quibusdam
+      maiores quidem accusantium harum quia! Sequi sapiente cumque mollitia aliquam qui delectus explicabo id dolore.
+    </p>
+  </section>
+
+  <!-- Eğitim -->
+  <section id="education">
+    <h2>Eğitim</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus laudantium ut reiciendis odio architecto sint
+      asperiores voluptate quasi omnis atque.</p>
+  </section>
+
+  <!-- Hizmetler -->
+  <section id="services">
+    <h2>Hizmetler</h2>
+    <div class="cards">
+      <div class="card">Web Developer</div>
+      <div class="card">Minecraft Developer</div>
+      <div class="card">Discord Bot Developer</div>
+    </div>
+  </section>
+
+  <!-- Referanslar -->
+  <section id="references">
+    <h2>Referanslar</h2>
+    <div class="logo-wrapper">
+      <a href="https://luxesnw.com/" target="_blank">
+        <div class="logo-container">
+          <img src="images/logo3.png" alt="Logo" class="logo-img">
+          <div class="hover-text">LuxesNetwork</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- İletişim -->
+  <section id="contact">
+    <h2>İletişim</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Adınız" required>
+      <input type="email" id="email" placeholder="E-posta" required>
+      <textarea id="message" rows="5" placeholder="Mesajınız" required></textarea>
+      <button type="submit">Gönder</button>
+    </form>
+
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+
+      <!-- Sol -->
+      <div class="footer-column footer-left">
+        <a href="#top">Ana Sayfa</a>
+        <a href="#about">Hakkımızda</a>
+        <a href="#references">Referanslar</a>
+      </div>
+
+      <!-- Orta -->
+      <div class="footer-column footer-center">
+        <p>LuxesNetwork - Yeni Nesil Bedwars Sunucusu.</p>
+      </div>
+
+      <!-- Sağ -->
+      <div class="footer-column footer-right">
+        <a href="https://instagram.com/" target="_blank">
+          <img src="images/instagram.png" alt="">
+        </a>
+        <a href="https://discord.com/" target="_blank">
+          <img src="images/discord.png" alt="">
+        </a>
+        <a href="https://tiktok.com/" target="_blank">
+          <img src="images/tik-tok.png" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- Alt Yazı -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 LuxesNetwork. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    const webhookURL = "DİSCORD_WEBHOOK_URL";
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const payload = {
+        content: `📩 Yeni İletişim Mesajı!\n👤 **Ad:** ${name}\n📧 **Email:** ${email}\n📝 **Mesaj:** ${message}`
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(() => {
+          alert("Mesajın gönderildi!");
+          document.getElementById("contactForm").reset();
+        })
+        .catch(error => {
+          console.error("Discord mesaj gönderilemedi:", error);
+          alert("Bir hata oluştu.");
+        });
+    });
+  </script>
+
+
+</body>
+
+</html>
